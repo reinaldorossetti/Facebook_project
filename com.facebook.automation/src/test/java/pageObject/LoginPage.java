@@ -17,7 +17,6 @@ public class LoginPage extends AbstractPage {
 
 	// delay set on properties file.
 	public functions functions = new functions();
-	String delay_s = functions.getConfig("sleep");
 	String delay_w = functions.getConfig("delay_wait");
 	int delay_wait = Integer.parseInt(delay_w);
 	private String senha;
