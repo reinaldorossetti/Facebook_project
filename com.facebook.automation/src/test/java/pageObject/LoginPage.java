@@ -26,7 +26,7 @@ public class LoginPage extends AbstractPage {
 	public  LoginPage login(String email) throws InterruptedException {
 	
 		System.out.println(email);
-		WebElement inputBox = driver.findElement(By.id("email"));
+		WebElement inputBox = functions.find_element(By.id("email"), delay_wait);
 		String textInsideInputBox = inputBox.getAttribute("value");
 		
 		try{ 
@@ -53,7 +53,6 @@ public class LoginPage extends AbstractPage {
 			
 		try{ 
 			loginContainer.password.sendKeys(senha);
-			Thread.sleep(delay_sleep);
 		}
 		catch(Exception e){
 			
@@ -66,13 +65,11 @@ public class LoginPage extends AbstractPage {
 	
 	public LoginPage loginbutton() throws Throwable {
 
-		Thread.sleep(delay_sleep);
-	
 		try{ 
 			String text_login = loginContainer.login.getText();
 			senha = loginContainer.password.getText();
+			
 			if(text_login.isEmpty() || senha.isEmpty()){
-				
 				System.out.println("error when filling out the login and password");
 				
 			}else{
@@ -92,7 +89,6 @@ public class LoginPage extends AbstractPage {
 	public LoginPage validate_login(String user_name) throws Exception {
 
 		driver.switchTo().defaultContent();
-		System.out.println("validate_login");
 		String user_name_site = null;
 		System.out.println("Step getText User");
 		
