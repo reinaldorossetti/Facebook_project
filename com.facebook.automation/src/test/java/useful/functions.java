@@ -51,7 +51,21 @@ public class functions extends AbstractPage{
 		return test;
 	}
 	
-public String getConfig(String name)  {
+	public String find_element(By locator, int seconds) {
+	
+		String product_text = "Not Found";
+		WebDriverWait wait = new WebDriverWait(driver, seconds);
+		WebElement element = null;
+		try{	
+			element = wait.until(ExpectedConditions.presenceOfElementLocated(driver.findElement(locator)));
+
+		}catch(Exception e){
+			System.out.println("\nElement not found! " + e);
+		}
+		return element;
+	}
+	
+	public String getConfig(String name)  {
 		
 		InputStream inputStream = null;
 		String value = null;
