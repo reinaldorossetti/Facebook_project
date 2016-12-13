@@ -19,7 +19,7 @@ public class AbstractPage {
 		
 		functions config = new functions();
 		driver.manage().window().maximize(); 
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.navigate().to(config.getConfig("website"));
 		driver.manage().deleteAllCookies();
 		return new LandingPage(driver);
