@@ -19,7 +19,6 @@ public class LoginPage extends AbstractPage {
 	public functions functions = new functions();
 	String delay_s = functions.getConfig("sleep");
 	String delay_w = functions.getConfig("delay_wait");
-	int delay_sleep = Integer.parseInt(delay_s);
 	int delay_wait = Integer.parseInt(delay_w);
 	private String senha;
 	protected String email;
@@ -37,7 +36,6 @@ public class LoginPage extends AbstractPage {
 			if(textInsideInputBox.isEmpty())
 			{
 				loginContainer.login.sendKeys(email);
-				Thread.sleep(delay_sleep);
 			}
 
 		}
@@ -61,7 +59,6 @@ public class LoginPage extends AbstractPage {
 		catch(Exception e){
 			
 				System.out.println("Error in login try again");
-				Thread.sleep(delay_sleep);
 				functions.sendKeys(By.cssSelector("#pass"), delay_wait, senha);
 			}	
 		return new LoginPage(driver);
@@ -80,7 +77,6 @@ public class LoginPage extends AbstractPage {
 				System.out.println("error when filling out the login and password");
 				
 			}else{
-				
 				loginContainer.loginbutton.click();
 			}
 			
@@ -91,25 +87,19 @@ public class LoginPage extends AbstractPage {
 				functions.searchAndClick(By.cssSelector("#loginbutton"), delay_wait);
 			}	
 		return new LoginPage(driver);
-		
 	}
 	
 	
 	public LoginPage validate_login(String user_name) throws Exception {
 
 		driver.switchTo().defaultContent();
-		Thread.sleep(delay_sleep);
 		System.out.println("validate_login");
 		String user_name_site = null;
 		System.out.println("Step getText User");
 		
-		
 		try{
 			user_name_site =  loginContainer.user_text_css.getText();
-			
 		}catch(Exception e){
-			
-			Thread.sleep(delay_sleep);
 			user_name_site = functions.refleshPage(By.xpath(".//*[@id='fb-timeline-cover-name']"), delay_wait);;
 		}
 		
