@@ -16,14 +16,11 @@ public class LogOutPage extends AbstractPage {
 
 	// delay set on properties file.
 	public functions functions = new functions();
-	public String delay_s = functions.getConfig("sleep");
 	public String delay_w = functions.getConfig("delay_wait");
-	public int delay_sleep = Integer.parseInt(delay_s);
 	public int delay_wait = Integer.parseInt(delay_w);
 
 	public LogOutPage logout() throws InterruptedException {
 	
-		Thread.sleep(delay_sleep);
 		//driver.switchTo().frame("iframeLogin");
 		System.out.println("Doing LogOut!");
 
@@ -46,11 +43,9 @@ public class LogOutPage extends AbstractPage {
 	public LogOutPage validate_logOut(String text) throws Throwable {
 
 		driver.switchTo().defaultContent();
-		Thread.sleep(delay_sleep);
 		String product_title =  driver.getTitle();
 		System.out.println("title: " +product_title);
 		String text_result = (text);
-		Thread.sleep(delay_sleep);
 		Boolean Test;
 		
 		if (product_title.contains(text_result)){
@@ -62,7 +57,6 @@ public class LogOutPage extends AbstractPage {
 	        System.out.print("\n ******* Assert Falhou!!! ********\n");
 	        Test = false;
 		}
-		
 		Assert.assertTrue(Test);
 		return new LogOutPage(driver);
 		
