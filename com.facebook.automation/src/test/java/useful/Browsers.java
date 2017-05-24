@@ -40,7 +40,6 @@ public class Browsers extends AbstractPage {
 		
 		LandingPage landingPage = new LandingPage(driver);
 		landingPage.navigateToWebSite();
-		Thread.sleep(3000);
 		return driver;
 		
 	}
