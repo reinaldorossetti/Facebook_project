@@ -34,7 +34,7 @@ public class LogOutPage extends AbstractPage {
 
 		try{ 
 			// Open menu Log Out
-			functions.searchAndClick(By.cssSelector(map.get("navigation_label_id")), delay_wait);
+			functions.searchAndClick(By.id(map.get("navigation_label_id")), delay_wait);
 			// select five option of submenu, starting of the end. Because another language should be different of log out/sair. 
 			functions.searchAndClick(By.cssSelector(map.get("submenu")), delay_wait);
 			
