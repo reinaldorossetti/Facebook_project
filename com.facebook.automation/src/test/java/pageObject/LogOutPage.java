@@ -25,7 +25,7 @@ public class LogOutPage extends AbstractPage {
 	    "submenu", ".navSubmenu.__MenuItem:nth-last-of-type(5)",
 	    "button", "#loginbutton",
 	    "menu", "fb-timeline-cover-name"
-);
+	);
 
 	public LogOutPage logout() throws InterruptedException {
 	
