@@ -203,15 +203,13 @@ public class functions extends AbstractPage{
 		
 		try{
 			driver.navigate().refresh();
-			Thread.sleep(delay_sleep);
 			driver.switchTo().alert().accept();
 			text = wait.until(ExpectedConditions.presenceOfElementLocated(locator)).getText();
 			
 		}catch (Exception e){
-			
+			// try again
 			System.out.println("Element not found, try again!"); 
 			driver.navigate().refresh();
-			Thread.sleep(delay_sleep);
 			alertConfirm();
 			text = wait.until(ExpectedConditions.presenceOfElementLocated(locator)).getText();
 		
