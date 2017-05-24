@@ -21,27 +21,30 @@ public class LoginPage extends AbstractPage {
 	int delay_wait = Integer.parseInt(delay_w);
 	private String senha;
 	protected String email;
-
+	
+	Map<String, String> map = ImmutableMap.of(
+	    "email", "email",
+	    "password", "#pass",
+	    "button", "#loginbutton",
+	    "menu", ".//*[@id='fb-timeline-cover-name']"
+	    );
 	
 	public  LoginPage login(String email) throws InterruptedException {
 	
 		System.out.println(email);
-		WebElement inputBox = functions.find_element(By.id("email"), delay_wait);
+		WebElement inputBox = functions.find_element(By.id(map.get("email")), delay_wait);
 		String textInsideInputBox = inputBox.getAttribute("value");
 		
-		try{ 
-			// Check whether input field is blank
-			// bug in IE.
+
 			if(textInsideInputBox.isEmpty())
 			{
 				loginContainer.login.sendKeys(email);
+			}else{
+				loginContainer.login.clear();
+				loginContainer.login.sendKeys(email);
 			}
 
-		}
-		catch(Exception e){
-			System.out.println("Error Email try again");
-			functions.sendKeys(By.cssSelector("#email"), delay_wait, email);
-		}	
+	
 		
 		return new LoginPage(driver);
 		
@@ -57,7 +60,7 @@ public class LoginPage extends AbstractPage {
 		catch(Exception e){
 			
 				System.out.println("Error in login try again");
-				functions.sendKeys(By.cssSelector("#pass"), delay_wait, senha);
+				functions.sendKeys(By.cssSelector(map.get("password")), delay_wait, senha);
 			}	
 		return new LoginPage(driver);
 		
@@ -80,7 +83,7 @@ public class LoginPage extends AbstractPage {
 		catch(Exception e){
 			
 				System.out.println("error in loginbutton");
-				functions.searchAndClick(By.cssSelector("#loginbutton"), delay_wait);
+				functions.searchAndClick(By.cssSelector(map.get("button")), delay_wait);
 			}	
 		return new LoginPage(driver);
 	}
@@ -95,12 +98,11 @@ public class LoginPage extends AbstractPage {
 		try{
 			user_name_site =  loginContainer.user_text_css.getText();
 		}catch(Exception e){
-			user_name_site = functions.refleshPage(By.xpath(".//*[@id='fb-timeline-cover-name']"), delay_wait);;
+			user_name_site = functions.refleshPage(By.xpath(map.get("menu")), delay_wait);;
 		}
 		
 		System.out.println("user logado: " + user_name_site);
 		Assert.assertEquals(user_name, user_name_site);
-		Thread.sleep(delay_sleep);
 		return new LoginPage(driver);
 		
 	}
