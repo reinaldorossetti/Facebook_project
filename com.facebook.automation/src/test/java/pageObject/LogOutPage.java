@@ -63,8 +63,8 @@ public class LogOutPage extends AbstractPage {
 			
 		}else{
 			System.out.println("\nResult Failed - Expected:" + product_title + "\nResult:" + text_result);
-	        System.out.print("\n ******* Assert Falhou!!! ********\n");
-	        Test = false;
+			System.out.print("\n ******* Assert Falhou!!! ********\n");
+			Test = false;
 		}
 		Assert.assertTrue(Test);
 		return new LogOutPage(driver);
