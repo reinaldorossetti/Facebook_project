@@ -24,7 +24,7 @@ public class LoginPage extends AbstractPage {
 	    "email", "email",
 	    "password", "#pass",
 	    "button", "#loginbutton",
-	    "menu", ".//*[@id=\'fb-timeline-cover-name\']"
+	    "menu", "fb-timeline-cover-name"
 	    );
 	
 	public  LoginPage login(String email) throws InterruptedException {
@@ -96,7 +96,7 @@ public class LoginPage extends AbstractPage {
 		try{
 			user_name_site =  loginContainer.user_text_css.getText();
 		}catch(Exception e){
-			user_name_site = functions.refleshPage(By.xpath(map.get("menu")), delay_wait);;
+			user_name_site = functions.refleshPage(By.id(map.get("menu")), delay_wait);;
 		}
 		
 		System.out.println("user logado: " + user_name_site);
