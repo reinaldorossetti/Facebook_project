@@ -24,7 +24,7 @@ public class LoginPage extends AbstractPage {
 	    "email", "email",
 	    "password", "#pass",
 	    "button", "#loginbutton",
-	    "menu", "//*[@id='fb-timeline-cover-name']"
+	    "menu", ".//*[@id=\'fb-timeline-cover-name\']"
 	    );
 	
 	public  LoginPage login(String email) throws InterruptedException {
