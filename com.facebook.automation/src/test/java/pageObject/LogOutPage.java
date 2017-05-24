@@ -42,7 +42,6 @@ public class LogOutPage extends AbstractPage {
 		catch(Exception e){
 			System.out.println("error not found element, try again!");
 			functions.searchAndClick(By.cssSelector(map.get("navigation_label_css")), delay_wait);
-			// select five option of submenu, starting of the end. Because another language should be different of log out/sair. 
 			functions.searchAndClick(By.cssSelector(map.get("submenu")), delay_wait);
 		}	
 		
